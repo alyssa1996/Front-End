@@ -7,14 +7,22 @@ function calcuateDate(){
         alert('시작 날짜보다 디데이 날짜가 더 뒤에 있습니다! 다시 선택해주세요:)')
     }
     else{
-        printDate(startDate,endDate,d_day);
+        document.getElementById("date").innerHTML = d_day+'일 남았습니다!';
     }
 }
 
-function printDate(today,input_date,d_day) {
+function countDate(){
+    var startingDate=new Date(document.getElementById('starting_date').value);
+    var input=document.getElementById('target_date').value;
+    var resultDate= new Date(startingDate.setDate(startingDate.getDate()+parseInt(input)));
 
-    document.getElementById("today").innerHTML = "시작 날짜: "+today;
-    document.getElementById("input_date").innerHTML = "끝나는 날짜: "+input_date;
-    document.getElementById("date").innerHTML = "남은 날짜: "+d_day+'일';
-    
+    document.getElementById('result_date').innerHTML=resultDate.toDateString();
+}
+
+function untilToday(){
+    var startingDate=new Date(document.getElementById('startingDate').value);
+    var endingDate=new Date(document.getElementById('endingDate').value);
+    var countDate= parseInt((endingDate.getTime()-startingDate.getTime())/(1000*24*60*60))
+
+    document.getElementById('countDate').innerHTML=countDate+'일 되었습니다:)';
 }
